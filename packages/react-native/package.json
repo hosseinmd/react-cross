@@ -2,6 +2,9 @@
   "name": "@react-cross/react-native",
   "version": "0.1.1",
   "description": "",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "src/index.js",
   "keywords": [],
   "author": "Hossein Mohammadi",
