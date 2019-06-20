@@ -4,7 +4,8 @@ import { AsyncStorage } from "../logic/AsyncStorage";
 import RNRestart from "react-native-restart";
 import DeviceInfo from "react-native-device-info";
 import { createAppContainer, createStackNavigator } from "./navigation";
-import { platform } from "react-cross-utility";
+import { platform } from "@react-cross/utility";
+import Navigator from "../navigator";
 function transitionConfig() {
   return {
     transitionSpec: {
@@ -38,20 +39,17 @@ const config = {
   slider: {},
   pages: {},
   menu_content: null,
-  typography: {},
   // menu_content
 
   createStackNavigator({
-    modals,
-    modals_statusbar,
-    typography,
+    modals={},
+    modals_statusbar={},
     pages,
     first_page,
     cardStyle = {},
   }) {
     this.modals = modals;
     this.modals_statusbar = modals_statusbar;
-    this.typography = typography;
     this.pages = pages;
     this.first_page = first_page;
     this.appNavigator = createAppContainer(
@@ -65,6 +63,7 @@ const config = {
         transitionConfig,
       }),
     );
+    return Navigator
   },
 
   get colorContent() {

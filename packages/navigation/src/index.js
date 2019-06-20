@@ -1,4 +1,3 @@
-import config, { colors } from "./config";
+import config from "./config";
 import dimensions from "./common/dimensions";
-export const typography = config.typography;
-export { colors, dimensions };
+export { dimensions, config };

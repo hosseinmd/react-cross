@@ -1,6 +1,6 @@
 import { createState } from "react-global-hook";
 import actions from "../actions";
-import { platform } from "react-cross-utility";
+import { platform } from "@react-cross/utility";
 
 const initialState = {
   navigationOptions: null,

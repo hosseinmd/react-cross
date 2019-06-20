@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import config from "../../config"; //  using now visual code bug
-import { platform } from "react-cross-utility";
+import { platform } from "@react-cross/utility";
 export default StyleSheet.create({
   modal_container: {
     overflow: "hidden",

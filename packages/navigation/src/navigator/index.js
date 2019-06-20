@@ -8,7 +8,7 @@ import Message from "../components/message";
 import Slider from "../slider";
 import back from "../utils/back";
 import action from "../context/action";
-import { platform } from "react-cross-utility";
+import { platform } from "@react-cross/utility";
 class Navigator extends PureComponent {
   componentDidMount() {
     BackHandler.addEventListener("hardwareBackPress", back.handler);

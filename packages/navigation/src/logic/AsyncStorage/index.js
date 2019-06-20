@@ -1,4 +1,4 @@
-import { AsyncStorage as RNAsyncStorage } from "react-native-cross";
+import { AsyncStorage as RNAsyncStorage } from "@react-cross/react-native";
 export const AsyncStorage = {
   async setItem(key, data) {
     try {

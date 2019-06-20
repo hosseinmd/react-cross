@@ -1,4 +1,4 @@
-import { AsyncStorage } from "react-native-cross";
+import { AsyncStorage } from "@react-cross/react-native";
 import enums from "../../common/enums";
 
 //AsyncStorage.clear();
@@ -39,7 +39,7 @@ class storage {
     },
     add: async Language => {
       this.setItem(enums.STORAGE.LANGUAGE, Language);
-    }
+    },
   };
   theme = {
     list: async () => {
@@ -49,7 +49,7 @@ class storage {
     },
     add: async theme => {
       await this.setItem(enums.STORAGE.THEME, theme);
-    }
+    },
   };
 }
 
