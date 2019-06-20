@@ -1,0 +1,27 @@
+{
+  "name": "@react-cross/navigation",
+  "version": "0.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": {
+    "name": "hossein mohammadi"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@react-cross/utility": "^0.1.0",
+    "@react-navigation/core": "^*",
+    "@react-navigation/web": "^1.0.0-alpha.8",
+    "jetemit": "^3.1.1",
+    "react": "^16.8.1",
+    "react-global-hook": "^1.0.7",
+    "react-native-device-info": "^0.24.3",
+    "react-native-exit-app": "^1.0.0",
+    "react-native-gesture-handler": "^1.0.15",
+    "react-native-restart": "0.0.7",
+    "react-native-status-bar-height": "^2.3.1",
+    "react-navigation": "^3.2.1"
+  }
+}

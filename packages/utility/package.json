@@ -1,0 +1,14 @@
+{
+  "name": "@react-cross/utility",
+  "version": "0.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "keywords": [],
+  "author": "Hossein Mohammadi",
+  "license": "MIT",
+  "dependencies": {},
+  "peerDependencies": {},
+  "devDependencies": {
+    "react-native": "*"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "@react-cross/react-native",
+  "version": "0.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "keywords": [],
+  "author": "Hossein Mohammadi",
+  "license": "MIT",
+  "dependencies": {
+    "@react-native-community/async-storage": "^1.5.0",
+    "react": "^16.8.6",
+    "react-native-vector-icons": "^6.5.0",
+    "react-native-web": "^0.11.4",
+    "react-web-vector-icons": "^1.0.2"
+  },
+  "peerDependencies": {
+    "react-native": "*"
+  }
+}
