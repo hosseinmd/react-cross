@@ -1,3 +1,4 @@
-import config from "./config";
+import config from "./config/index";
 import action from "./context/action";
-export { action, config };
+import Navigator from "./navigator";
+export { action, config, Navigator };

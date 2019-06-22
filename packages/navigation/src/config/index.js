@@ -6,13 +6,14 @@ import DeviceInfo from "react-native-device-info";
 import { createAppContainer, createStackNavigator } from "./navigation";
 import { platform } from "@react-cross/utility";
 import Navigator from "../navigator";
+import { getGlobal } from "../logic/store";
 function transitionConfig() {
   return {
     transitionSpec: {
       duration: 400,
       easing: Easing.out(Easing.poly(4)),
       timing: Animated.timing,
-      useNativeDriver: true,
+      useNativeDriver: true
     },
     screenInterpolator: sceneProps => {
       const { layout, position, scene } = sceneProps;
@@ -20,13 +21,13 @@ function transitionConfig() {
       const width = (I18nManager.isRTL ? -1 : 1) * layout.initWidth;
       const translateX = position.interpolate({
         inputRange: [thisSceneIndex - 1, thisSceneIndex],
-        outputRange: [width, 0],
+        outputRange: [width, 0]
       });
 
       return {
-        transform: [{ translateX }],
+        transform: [{ translateX }]
       };
-    },
+    }
   };
 }
 const config = {
@@ -42,11 +43,11 @@ const config = {
   // menu_content
 
   createStackNavigator({
-    modals={},
-    modals_statusbar={},
+    modals = {},
+    modals_statusbar = {},
     pages,
     first_page,
-    cardStyle = {},
+    cardStyle = {}
   }) {
     this.modals = modals;
     this.modals_statusbar = modals_statusbar;
@@ -58,12 +59,14 @@ const config = {
         headerMode: "float",
         cardStyle: {
           ...StyleSheet.absoluteFillObject,
-          ...cardStyle,
+          ...cardStyle
         },
-        transitionConfig,
-      }),
+        transitionConfig
+      })
     );
-    return Navigator
+    const [, actions] = getGlobal();
+    actions.setAppContainer(this.appNavigator);
+    return Navigator;
   },
 
   get colorContent() {
@@ -91,7 +94,7 @@ const config = {
     async set(language) {
       await AsyncStorage.setItem("LANGUAGE", language);
       I18nManager.forceRTL(language.isRTL);
-    },
+    }
   },
   theme: {
     value: null,
@@ -101,7 +104,7 @@ const config = {
     async set(theme) {
       await AsyncStorage.setItem("THEME", theme);
       this.value = theme;
-    },
+    }
   },
 
   async submit(language, theme) {
@@ -115,7 +118,7 @@ const config = {
     const status_big = ["iPhone X", "iPhone XR", "iPhone XS Max", "iPhone XS"];
     const model = DeviceInfo.getModel();
     return status_big.includes(model);
-  },
+  }
 };
 
 export default config;

@@ -3,17 +3,17 @@ import actions from "../actions";
 import { platform } from "@react-cross/utility";
 
 const initialState = {
-  navigationOptions: null,
+  appContainer: null
 };
 
 export const [useGlobal, getGlobal] = createState(
   initialState,
-  actions,
-  store => {
-    if (platform.isWeb) {
-      window.onpopstate = event => {
-        // BackHandler.goBack(event);
-      };
-    }
-  },
+  actions
+  // store => {
+  //   if (platform.isWeb) {
+  //     window.onpopstate = event => {
+  //       // BackHandler.goBack(event);
+  //     };
+  //   }
+  // }
 );

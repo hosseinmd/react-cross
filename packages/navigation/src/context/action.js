@@ -1,6 +1,8 @@
 import { enums } from "../common";
 import { emit, on } from "jetemit";
 import { NavigationActions, StackActions } from "@react-navigation/core";
+import config from "../config";
+import RNExitApp from "react-native-exit-app";
 
 var _state = {
   page: [],
@@ -10,7 +12,7 @@ var _state = {
   slider: false,
   message: null,
   page_anim: 0,
-  event: {},
+  event: {}
 };
 const action = {
   navigation: null,
@@ -20,13 +22,36 @@ const action = {
   set state(value) {
     _state = value;
   },
+  hardwareBack() {
+    if (action.slider.get()) {
+      const { NonWithdrawal } = config.slider[action.slider.get().name];
+      if (NonWithdrawal) {
+        RNExitApp.exitApp();
+      } else action.slider.close();
+    } else if (!!action.modal.get()) {
+      const { NonWithdrawal } = config.modals[action.modal.get().name];
+      if (!NonWithdrawal) action.modal.hide();
+    } else if (action.menu.get()) {
+      action.menu.close();
+    } else if (config.pages[action.page.get()].screen.backHandler) {
+      config.pages[action.page.get()].screen.backHandler();
+    } else if (action.page.get() == config.first_page) {
+      action.exitApp();
+    } else {
+      action.page.delete();
+    }
+    return true;
+  },
+  exitApp() {
+    RNExitApp.exitApp();
+  },
   page: {
     set(name, props) {
       action.navigation.dispatch(
         NavigationActions.navigate({
           routeName: name,
-          params: props,
-        }),
+          params: props
+        })
       );
     },
     get() {
@@ -35,19 +60,19 @@ const action = {
     setBackAction: {
       pop(count) {
         _state.backAction = StackActions.pop({
-          n: count,
+          n: count
         });
       },
       popToTop() {
         _state.backAction = StackActions.popToTop();
-      },
+      }
     },
     delete(n = 1) {
       action.navigation.dispatch(
         _state.backAction ||
           StackActions.pop({
-            n,
-          }),
+            n
+          })
       );
       _state.backAction = null;
     },
@@ -61,8 +86,8 @@ const action = {
       },
       set(props) {
         action.navigation.dispatch(NavigationActions.setParams(props));
-      },
-    },
+      }
+    }
   },
 
   modal: {
@@ -74,7 +99,7 @@ const action = {
       _state.modal[id] = {
         id,
         name,
-        props,
+        props
       };
       emit(enums.JETEMIT.MODAL, this.list());
     },
@@ -93,13 +118,13 @@ const action = {
       set: props => {
         action.modal.get().props = Object.assign(
           { ...action.modal.get().props },
-          props,
+          props
         );
         emit(enums.JETEMIT.MODAL_PROPS, action.modal.get().props);
       },
       willChange(callback) {
         return on(enums.JETEMIT.MODAL_PROPS, callback);
-      },
+      }
     },
     hide(id) {
       id
@@ -110,13 +135,13 @@ const action = {
     remove(id) {
       id ? delete _state.modal[id] : delete _state.modal[this.getLastIndex()];
       emit(enums.JETEMIT.MODAL, this.list());
-    },
+    }
   },
   slider: {
     open(name, props = {}) {
       _state.slider = {
         name,
-        props,
+        props
       };
       emit(enums.JETEMIT.SLIDER, _state.slider);
     },
@@ -126,7 +151,7 @@ const action = {
     },
     get() {
       return _state.slider;
-    },
+    }
   },
   menu: {
     open() {
@@ -139,27 +164,27 @@ const action = {
     },
     get() {
       return _state.menu;
-    },
+    }
   },
   message: {
     TYPE_ERROR: "error",
     TYPE_WARNING: "warning",
     TYPE_FINE: "fine",
-    show: ( messageNode, timeout = 4000 ) => {
+    show: (messageNode, timeout = 4000) => {
       emit(enums.JETEMIT.MESSAGE, messageNode);
       action.message.time = setTimeout(action.message.remove, timeout);
     },
     remove: () => {
       clearTimeout(action.message.time);
       emit(enums.JETEMIT.MESSAGE, false);
-    },
+    }
   },
   set event(event) {
     _state.event = event;
   },
   get event() {
     return _state.event;
-  },
+  }
 };
 
 export default action;
