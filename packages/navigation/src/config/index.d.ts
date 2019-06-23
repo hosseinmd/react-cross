@@ -1,12 +1,13 @@
 import {
   NavigationRouteConfigMap,
-  NavigationContainer,
+  NavigationContainer
 } from "react-navigation";
 import { Component, PureComponent } from "react";
 import { TextStyle, ViewStyle } from "react-native";
+import { string } from "postcss-selector-parser";
 
 type theme = "dark" | "light";
-const language = { isRTL: Boolean, name: String };
+type language = { isRTL: Boolean; name: String };
 interface modals {
   [key: string]: {
     component: String;
@@ -22,26 +23,27 @@ interface StackNavigatorParams {
   first_page: String;
   cardStyle: ViewStyle;
 }
-const config = {
-  appNavigator: NavigationContainer,
-  first_page: String,
-  modals: modals,
-  modals_statusbar: Object,
-  slider: Object,
-  pages: NavigationRouteConfigMap,
-  createStackNavigator: (config: StackNavigatorParams) => undefined,
+declare let config: {
+  appNavigator: NavigationContainer;
+  first_page: String;
+  modals: modals;
+  modals_statusbar: Object;
+  slider: Object;
+  pages: NavigationRouteConfigMap;
+  createStackNavigator: (config: StackNavigatorParams) => undefined;
 
-  isRTL: Boolean,
+  isRTL: Boolean;
   language: {
-    value: language,
+    value: language;
 
-    reduce: () => undefined,
-  },
+    reduce: () => undefined;
+  };
   theme: {
-    reduce: () => undefined,
-  },
-  colorContent: String,
-  submit: (language: language, theme: theme) => undefined,
-  isAppleStatusBarBig: boolean,
+    value: String;
+    reduce: () => undefined;
+  };
+  colorContent: String;
+  submit: (language: language, theme: theme) => undefined;
+  isAppleStatusBarBig: boolean;
 };
 export default config;
