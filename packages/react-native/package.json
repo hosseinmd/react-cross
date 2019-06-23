@@ -1,6 +1,6 @@
 {
   "name": "@react-cross/react-native",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "",
   "publishConfig": {
     "access": "public"
@@ -10,8 +10,8 @@
   "author": "Hossein Mohammadi",
   "license": "MIT",
   "dependencies": {
-    "@react-native-community/netinfo": "^2.0.0",
     "@react-native-community/async-storage": "^1.5.0",
+    "@react-native-community/netinfo": "^2.0.0",
     "react": "^16.8.6",
     "react-native-vector-icons": "^6.5.0",
     "react-native-web": "^0.11.4",
