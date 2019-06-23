@@ -1,6 +1,6 @@
 {
   "name": "@react-cross/navigation",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "",
   "publishConfig": {
     "access": "public"
@@ -14,8 +14,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@react-cross/react-native": "^0.2.0",
-    "@react-cross/utility": "^0.2.0",
+    "@react-cross/react-native": "^0.2.1",
+    "@react-cross/utility": "^0.2.1",
     "@react-navigation/core": "^*",
     "@react-navigation/web": "^1.0.0-alpha.8",
     "jetemit": "^3.1.1",

@@ -13,8 +13,9 @@ const Navigator = memo(
     const [state] = useGlobal(["appContainer"]);
     useEffect(() => {
       BackHandler.addEventListener("hardwareBackPress", action.hardwareBack);
-      StatusBar.setBarStyle(statusBarContentColor);
+      statusBarContentColor && StatusBar.setBarStyle(statusBarContentColor);
       platform.isAndroid &&
+        statusBarBackgroundColor &&
         StatusBar.setBackgroundColor(statusBarBackgroundColor);
     }, []);
     const Navigation = state.appContainer;
@@ -32,7 +33,7 @@ const Navigator = memo(
         <Message />
       </View>
     );
-  }
+  },
 );
 //
 export default Navigator;
