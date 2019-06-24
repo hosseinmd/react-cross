@@ -3,14 +3,13 @@ import {
   NavigationContainer
 } from "react-navigation";
 import { Component, PureComponent } from "react";
-import { TextStyle, ViewStyle } from "react-native";
-import { string } from "postcss-selector-parser";
+import { ViewStyle } from "react-native";
 
 type theme = "dark" | "light";
 type language = { isRTL: Boolean; name: String };
 interface modals {
   [key: string]: {
-    component: String;
+    component: Component | PureComponent;
     NonWithdrawal: boolean;
     statusbar: String[];
   };
