@@ -23,13 +23,15 @@ const action = {
     _state = value;
   },
   hardwareBack() {
+    const [state] = getGlobal();
+
     if (action.slider.get()) {
       const { NonWithdrawal } = config.slider[action.slider.get().name];
       if (NonWithdrawal) {
         RNExitApp.exitApp();
       } else action.slider.close();
     } else if (!!action.modal.get()) {
-      const { NonWithdrawal } = config.modals[action.modal.get().name];
+      const { NonWithdrawal } = state.modals[action.modal.get().name];
       if (!NonWithdrawal) action.modal.hide();
     } else if (action.menu.get()) {
       action.menu.close();

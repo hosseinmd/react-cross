@@ -6,8 +6,6 @@ export default function createAppContainer(
   Component,
   { modals = {}, modals_statusbar = {} },
 ) {
-  config.modals = modals;
-  config.modals_statusbar = modals_statusbar;
   const appContainer = RNcreateAppContainer(Component);
   const [, actions] = getGlobal();
   actions.setAppContainer({ appContainer, modals, modals_statusbar });

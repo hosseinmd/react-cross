@@ -10,8 +10,6 @@ const config = {
   // first_page
   first_page: null,
   // typography
-  modals: {},
-  modals_statusbar: {},
   slider: {},
   pages: {},
   menu_content: null,
