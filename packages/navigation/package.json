@@ -14,23 +14,28 @@
   },
   "license": "MIT",
   "dependencies": {
+    "react-navigation-drawer": "1.3.0",
+    "react-navigation-tabs": "1.0.2",
     "@react-cross/react-native": "^0.2.2",
     "@react-cross/utility": "^0.2.2",
-    "@react-navigation/core": "^*",
-    "@react-navigation/web": "^1.0.0-alpha.8",
+    "@react-navigation/core": "~3.2.1",
+    "@react-navigation/native": "^3.5.0",
+    "@react-navigation/web": "^1.0.0-alpha.9",
     "jetemit": "^3.1.1",
     "react": "^16.8.6",
     "react-art": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-global-hook": "^1.0.7",
+    "react-navigation": "^3.6.1",
     "react-native-device-info": "^0.24.3",
     "react-native-exit-app": "^1.0.0",
     "react-native-gesture-handler": "^1.0.15",
     "react-native-restart": "0.0.7",
     "react-native-status-bar-height": "^2.3.1",
-    "react-navigation": "^3.2.1"
+    "react-navigation-stack": "1.2.0"
   },
   "devDependencies": {
-    "react-native": "*"
-  }
+    "@types/react-native": "~0.57.38"
+  },
+  "peerDependencies": {}
 }

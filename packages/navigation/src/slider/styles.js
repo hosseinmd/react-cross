@@ -4,7 +4,8 @@ export default StyleSheet.create({
   content_container: {
     ...shadows.menu,
     position: "absolute",
-    width: "95%",
+    left: 0,
+    right: 0,
     borderRadius: 20,
     margin: 10,
     overflow: "hidden",

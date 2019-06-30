@@ -5,7 +5,7 @@ import styles from "./styles";
 import { enums } from "../../common";
 import action from "../../context/action";
 import { Touchable } from "../ui";
-import { Header } from "react-navigation-stack";
+import { Header } from "../../react-navigation";
 
 export default class Message extends PureComponent {
   state = {

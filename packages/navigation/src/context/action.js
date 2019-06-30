@@ -1,6 +1,6 @@
 import { enums } from "../common";
 import { emit, on } from "jetemit";
-import { NavigationActions, StackActions } from "@react-navigation/core";
+import { NavigationActions, StackActions } from "../react-navigation";
 import config from "../config";
 import RNExitApp from "react-native-exit-app";
 

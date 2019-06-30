@@ -1,7 +1,7 @@
 import {
   NavigationRouteConfigMap,
   NavigationContainer
-} from "react-navigation";
+} from "../react-navigation";
 import { Component, PureComponent } from "react";
 import { ViewStyle } from "react-native";
 
