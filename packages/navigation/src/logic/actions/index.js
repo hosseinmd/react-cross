@@ -5,11 +5,11 @@ export default {
     const childKey = state.routes[state.index].key;
     const activeNav = navigatorRef._navigation.getChildNavigation(childKey);
     const navigationOptions = navigatorRef._navigation.router.getScreenOptions(
-      activeNav
+      activeNav,
     );
     store.setState({ navigationOptions });
   },
-  setAppContainer: (store, appContainer) => {
-    store.setState({ appContainer });
-  }
+  setAppContainer: (store, options) => {
+    store.setState(options);
+  },
 };

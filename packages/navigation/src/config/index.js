@@ -1,35 +1,10 @@
 import enums from "../common/enums"; //never use common/index becuase color use config.theme
-import { I18nManager, Easing, Animated, StyleSheet } from "react-native";
+import { I18nManager } from "react-native";
 import { AsyncStorage } from "../logic/AsyncStorage";
 import RNRestart from "react-native-restart";
 import DeviceInfo from "react-native-device-info";
-import { createAppContainer, createStackNavigator } from "../react-navigation";
 import { platform } from "@react-cross/utility";
-import Navigator from "../navigator";
-import { getGlobal } from "../logic/store";
-function transitionConfig() {
-  return {
-    transitionSpec: {
-      duration: 400,
-      easing: Easing.out(Easing.poly(4)),
-      timing: Animated.timing,
-      useNativeDriver: true,
-    },
-    screenInterpolator: sceneProps => {
-      const { layout, position, scene } = sceneProps;
-      const thisSceneIndex = scene.index;
-      const width = (I18nManager.isRTL ? -1 : 1) * layout.initWidth;
-      const translateX = position.interpolate({
-        inputRange: [thisSceneIndex - 1, thisSceneIndex],
-        outputRange: [width, 0],
-      });
 
-      return {
-        transform: [{ translateX }],
-      };
-    },
-  };
-}
 const config = {
   appNavigator: {},
   // first_page
@@ -41,33 +16,6 @@ const config = {
   pages: {},
   menu_content: null,
   // menu_content
-
-  createStackNavigator({
-    modals = {},
-    modals_statusbar = {},
-    pages,
-    first_page,
-    cardStyle = {},
-  }) {
-    this.modals = modals;
-    this.modals_statusbar = modals_statusbar;
-    this.pages = pages;
-    this.first_page = first_page;
-    this.appNavigator = createAppContainer(
-      createStackNavigator(pages, {
-        initialRouteName: first_page,
-        headerMode: "float",
-        cardStyle: {
-          ...StyleSheet.absoluteFillObject,
-          ...cardStyle,
-        },
-        transitionConfig,
-      }),
-    );
-    const [, actions] = getGlobal();
-    actions.setAppContainer(this.appNavigator);
-    return Navigator;
-  },
 
   get colorContent() {
     return this.theme == enums.THEME.LIGHT

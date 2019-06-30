@@ -3,13 +3,7 @@ import "react-native-gesture-handler"; // fix bug
 module.exports = {
   // Native
   get createAppContainer() {
-    return require('@react-navigation/native').createAppContainer;
-  },
-  get createNavigationContainer() {
-    console.warn(
-      '`createNavigationContainer()` has been deprecated, please use `createAppContainer()` instead. You can also import createAppContainer directly from @react-navigation/native'
-    );
-    return require('@react-navigation/native').createAppContainer;
+    return require('./createAppContainer').default;
   },
   get createKeyboardAwareNavigator() {
     return require('@react-navigation/native').createKeyboardAwareNavigator;
@@ -104,7 +98,7 @@ module.exports = {
   // Navigators
 
   get createStackNavigator() {
-    return require('react-navigation-stack').createStackNavigator;
+    return require('./createStackNavigator').default;
   },
   get createSwitchNavigator() {
     return require('@react-navigation/core').createSwitchNavigator;

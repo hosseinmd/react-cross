@@ -3,12 +3,14 @@ import actions from "../actions";
 import { platform } from "@react-cross/utility";
 
 const initialState = {
-  appContainer: null
+  appContainer: null,
+  modals: {},
+  modals_statusbar: {},
 };
 
 export const [useGlobal, getGlobal] = createState(
   initialState,
-  actions
+  actions,
   // store => {
   //   if (platform.isWeb) {
   //     window.onpopstate = event => {
