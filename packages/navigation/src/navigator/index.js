@@ -1,10 +1,9 @@
 import React, { memo, useEffect } from "react";
 import styles from "./styles";
-import { BackHandler, StatusBar, View } from "react-native";
-import Modal from "../modal";
+import { StatusBar, View } from "react-native";
 import Message from "../components/message";
 import Slider from "../slider";
-import action from "../context/action";
+import { action } from "../action";
 import { platform } from "@react-cross/utility";
 import { useGlobal } from "../logic/store";
 
@@ -12,7 +11,6 @@ const Navigator = memo(
   ({ statusBarContentColor, statusBarBackgroundColor }) => {
     const [state] = useGlobal(["appContainer"]);
     useEffect(() => {
-      BackHandler.addEventListener("hardwareBackPress", action.hardwareBack);
       statusBarContentColor && StatusBar.setBarStyle(statusBarContentColor);
       platform.isAndroid &&
         statusBarBackgroundColor &&
@@ -28,7 +26,6 @@ const Navigator = memo(
             }}
           />
         )}
-        <Modal />
         <Slider />
         <Message />
       </View>

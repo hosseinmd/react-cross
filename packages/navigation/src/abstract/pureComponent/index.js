@@ -38,7 +38,7 @@ export default class PureComponent extends RNPureComponent {
   }
   clearSubscribes() {
     this.__unsubscribes__.forEach(function(unsubscribe) {
-      unsubscribe();
+      unsubscribe && unsubscribe();
     });
   }
   componentWillUnmount() {

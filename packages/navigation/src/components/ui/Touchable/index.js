@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { TouchableNativeFeedback, TouchableOpacity, View } from "react-native";
-import action from "../../../context/action";
+import { action } from "../../../action";
 import { platform } from "@react-cross/utility";
 export default class Touchable extends PureComponent {
   onPress = event => {

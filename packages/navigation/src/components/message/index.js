@@ -3,7 +3,7 @@ import { PureComponent } from "../../abstract";
 import { LayoutAnimation } from "react-native";
 import styles from "./styles";
 import { enums } from "../../common";
-import action from "../../context/action";
+import { action } from "../../action";
 import { Touchable } from "../ui";
 import { Header } from "../../react-navigation";
 

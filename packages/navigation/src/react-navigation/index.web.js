@@ -98,7 +98,7 @@ module.exports = {
   // Navigators
 
   get createStackNavigator() {
-    return require("./createStackNavigator").default;
+    return require("react-navigation-stack").createStackNavigator;
   },
   get createSwitchNavigator() {
     return require("@react-navigation/core").createSwitchNavigator;

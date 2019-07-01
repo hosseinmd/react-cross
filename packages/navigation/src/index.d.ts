@@ -1,6 +1,5 @@
 import config from "./config/index";
-import action from "./context/action";
+export { action } from "./action";
 import Navigator from "./navigator";
-export * from "./react-navigation"
-export { action, config, Navigator };
-
+export * from "./react-navigation";
+export { config, Navigator };

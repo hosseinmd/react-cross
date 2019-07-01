@@ -9,7 +9,7 @@ import {
 import styles from "./styles";
 import { enums, dimensions } from "../common";
 import { PureComponent } from "../abstract";
-import action from "../context/action";
+import { action } from "../action";
 import config from "../config";
 
 export default class Slider extends PureComponent {
