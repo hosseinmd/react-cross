@@ -22,7 +22,8 @@ const Navigator = memo(
         {Navigation && (
           <Navigation
             ref={navigatorRef => {
-              action.navigation = navigatorRef;
+
+              action.navigation = navigatorRef._navigation;
             }}
           />
         )}
