@@ -16,4 +16,7 @@ export const NetInfo = {
       },
     };
   },
+  getConnectionInfo() {
+    return { type: window.navigator.onLine ? "online" : "none" };
+  },
 };
