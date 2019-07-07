@@ -27,8 +27,12 @@ export const action = {
    */
   isDrawerOpen(navigation) {
     const parent = navigation.dangerouslyGetParent();
-    console.log(parent);
-    return parent && parent.state && parent.state.isDrawerOpen;
+    return (
+      parent &&
+      parent.state &&
+      (parent.state.isDrawerOpen ||
+        parent.state.drawerMovementDirection === "opening")
+    );
   },
   get state() {
     return _state;
