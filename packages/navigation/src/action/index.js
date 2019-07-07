@@ -31,7 +31,8 @@ export const action = {
       parent &&
       parent.state &&
       (parent.state.isDrawerOpen ||
-        parent.state.drawerMovementDirection === "opening")
+        parent.state.drawerMovementDirection === "opening") &&
+        parent.state.drawerMovementDirection !== "closing"
     );
   },
   get state() {
