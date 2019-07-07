@@ -1,7 +1,11 @@
 import { enums } from "../common";
 import { emit, on } from "jetemit";
-import { NavigationActions, StackActions } from "../react-navigation";
-import config from "../config";
+import {
+  NavigationActions,
+  StackActions,
+  NavigationScreenProp,
+  NavigationState,
+} from "../react-navigation";
 import RNExitApp from "react-native-exit-app";
 
 var _state = {
@@ -15,7 +19,17 @@ var _state = {
   event: {},
 };
 export const action = {
+  /**@type {NavigationScreenProp<NavigationState>} */
   navigation: null,
+  /**
+   * @param {NavigationScreenProp<NavigationState>} navigation
+   * @returns {boolean}
+   */
+  isDrawerOpen(navigation) {
+    const parent = navigation.dangerouslyGetParent();
+    console.log(parent);
+    return parent && parent.state && parent.state.isDrawerOpen;
+  },
   get state() {
     return _state;
   },

@@ -2,6 +2,7 @@ import { NavigationScreenProp, NavigationState } from "../react-navigation";
 
 export namespace action {
   const navigation: NavigationScreenProp<NavigationState>;
+  function isDrawerOpen(): boolean
   const state: {}
   function exitApp(): void
   const page: {
