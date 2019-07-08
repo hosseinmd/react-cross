@@ -27,7 +27,6 @@ declare let config: {
   first_page: String;
   modals: modals;
   modals_statusbar: Object;
-  slider: Object;
   pages: NavigationRouteConfigMap;
   createStackNavigator: (config: StackNavigatorParams) => undefined;
 

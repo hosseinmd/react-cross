@@ -10,7 +10,6 @@ const config = {
   // first_page
   first_page: null,
   // typography
-  slider: {},
   pages: {},
   menu_content: null,
   // menu_content

@@ -2,7 +2,6 @@ import React, { memo, useEffect } from "react";
 import styles from "./styles";
 import { StatusBar, View } from "react-native";
 import Message from "../components/message";
-import Slider from "../slider";
 import { action } from "../action";
 import { platform } from "@react-cross/utility";
 import { useGlobal } from "../logic/store";
@@ -27,7 +26,6 @@ const Navigator = memo(
             }}
           />
         )}
-        <Slider />
         <Message />
       </View>
     );
