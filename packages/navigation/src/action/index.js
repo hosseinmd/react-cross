@@ -1,11 +1,6 @@
 import { enums } from "../common";
 import { emit, on } from "jetemit";
-import {
-  NavigationActions,
-  StackActions,
-  NavigationScreenProp,
-  NavigationState,
-} from "../react-navigation";
+import { NavigationActions, StackActions } from "../react-navigation";
 import RNExitApp from "react-native-exit-app";
 
 var _state = {
@@ -13,16 +8,19 @@ var _state = {
   backAction: null,
   modal: {},
   menu: false,
-  slider: false,
   message: null,
   page_anim: 0,
   event: {},
 };
 export const action = {
-  /**@type {NavigationScreenProp<NavigationState>} */
+  /**
+   * @typedef NavigationScreen
+   * @type {import("../react-navigation").NavigationScreenProp<import("../react-navigation").NavigationState>}
+   */
+  /**@type {NavigationScreen} */
   navigation: null,
   /**
-   * @param {NavigationScreenProp<NavigationState>} navigation
+   * @param {NavigationScreen} navigation
    * @returns {boolean}
    */
   isDrawerOpen(navigation) {
@@ -32,8 +30,29 @@ export const action = {
       parent.state &&
       (parent.state.isDrawerOpen ||
         parent.state.drawerMovementDirection === "opening") &&
-        parent.state.drawerMovementDirection !== "closing"
+      parent.state.drawerMovementDirection !== "closing"
     );
+  },
+  /**
+   * @param {NavigationScreen} navigation
+   * @returns {boolean}
+   */
+  getNavigationOptions: navigation => {
+    const screenNavigation = {
+      state: navigation.state.routes[navigation.state.index],
+      dispatch: navigation.dispatch,
+    };
+    return navigation.router.getScreenOptions(screenNavigation);
+  },
+
+  /**
+   * @param {import("../react-navigation").NavigationState} navigation
+   * @returns {import("../react-navigation").NavigationRoute}
+   */
+  getActiveRoute(state) {
+    if (state.routes != undefined && state.index != undefined)
+      return action.getActiveRoute(state.routes[state.index]);
+    else return state;
   },
   get state() {
     return _state;
@@ -134,35 +153,6 @@ export const action = {
     remove(id) {
       id ? delete _state.modal[id] : delete _state.modal[this.getLastIndex()];
       emit(enums.JETEMIT.MODAL, this.list());
-    },
-  },
-  slider: {
-    open(name, props = {}) {
-      _state.slider = {
-        name,
-        props,
-      };
-      emit(enums.JETEMIT.SLIDER, _state.slider);
-    },
-    close() {
-      _state.slider = false;
-      emit(enums.JETEMIT.SLIDER, false);
-    },
-    get() {
-      return _state.slider;
-    },
-  },
-  menu: {
-    open() {
-      _state.menu = true;
-      emit(enums.JETEMIT.CHANGE_MENU, true);
-    },
-    close() {
-      _state.menu = false;
-      emit(enums.JETEMIT.CHANGE_MENU, false);
-    },
-    get() {
-      return _state.menu;
     },
   },
   message: {
