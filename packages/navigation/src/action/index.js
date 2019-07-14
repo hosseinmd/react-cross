@@ -24,19 +24,19 @@ export const action = {
   /**
    * @private
    */
-  _navigationIsEnable: true,
-
-  throttle(func) {
-    return function() {
-      if (action._navigationIsEnable) {
-        action._navigationIsEnable = false;
+  _navigationTimeout: null,
+  throttle(func, wait = 500) {
+    const throttled = function() {
+      if (!action._navigationTimeout) {
         func(arguments);
-        setTimeout(function() {
-          action._navigationIsEnable = true;
-        }, 500);
+        action._navigationTimeout = setTimeout(function() {
+          action._navigationTimeout = null;
+        }, wait);
       }
     };
+    return throttled;
   },
+
   /**
    * @param {NavigationScreen} navigation
    * @returns {boolean}
