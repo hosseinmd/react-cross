@@ -32,16 +32,10 @@ yarn add react-native-web
 
 ## Linking
 
-### mobile
-
 ```shell
 react-native link @react-native-community/async-storage
 react-native link @react-native-community/netinfo
 ```
-
-### web
-
-doesn't needed
 
 
 ## Usage
