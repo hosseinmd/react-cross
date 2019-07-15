@@ -20,7 +20,12 @@ export const action = {
 
   /**@type {NavigationScreen} */
   navigation: null,
-
+  getCurrentRouteKey(navigationState) {
+    if (!navigationState) return null
+    const route = navigationState.routes[navigationState.index]
+    if (route.routes) return action.getCurrentRouteKey(route)
+    return route.key
+  },
   /**
    * @private
    */

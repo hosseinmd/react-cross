@@ -5,6 +5,7 @@ import Message from "../components/message";
 import { action } from "../action";
 import { platform } from "@react-cross/utility";
 import { useGlobal } from "../logic/store";
+import { BackHandler } from "../components/atoms";
 
 const Navigator = memo(
   ({ statusBarContentColor, statusBarBackgroundColor }) => {
@@ -21,8 +22,19 @@ const Navigator = memo(
         {Navigation && (
           <Navigation
             ref={navigatorRef => {
-
               action.navigation = navigatorRef._navigation;
+            }}
+            onNavigationStateChange={(prevState, currentState) => {
+              const currentComponent =
+                BackHandler.subscribedComponents[
+                  action.getCurrentRouteKey(currentState)
+                ];
+              const prevComponent =
+                BackHandler.subscribedComponents[
+                  action.getCurrentRouteKey(prevState)
+                ];
+              prevComponent && prevComponent(false);
+              currentComponent && currentComponent(true);
             }}
           />
         )}
