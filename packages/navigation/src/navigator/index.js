@@ -22,7 +22,7 @@ const Navigator = memo(
         {Navigation && (
           <Navigation
             ref={navigatorRef => {
-              action.navigation = navigatorRef._navigation;
+              if (navigatorRef) action.navigation = navigatorRef._navigation;
             }}
             onNavigationStateChange={(prevState, currentState) => {
               const currentComponent =
