@@ -16,6 +16,7 @@ const Navigator = memo(
         statusBarBackgroundColor &&
         StatusBar.setBackgroundColor(statusBarBackgroundColor);
     }, []);
+    /**@type {import("../react-navigation").NavigationContainer} */
     const Navigation = state.appContainer;
     return (
       <View style={styles.container}>
