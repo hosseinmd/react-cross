@@ -26,6 +26,20 @@ export const action = {
     if (route.routes) return action.getCurrentRouteKey(route)
     return route.key
   },
+  isDwawerOpen(navigation){
+    const { state } = navigation;
+    if (
+      (state.isDrawerOpen || state.drawerMovementDirection === "opening") &&
+      state.drawerMovementDirection !== "closing"
+    ) {
+      return true
+    } else if (
+      !state.isDrawerOpen ||
+      state.drawerMovementDirection !== "opening"
+    ) {
+      return false
+    }
+  },
   /**
    * @private
    */
