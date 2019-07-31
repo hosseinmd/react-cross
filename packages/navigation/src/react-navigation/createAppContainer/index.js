@@ -7,3 +7,6 @@ export default function createAppContainer(Component) {
   actions.setAppContainer({ appContainer });
   return Navigator;
 }
+export function createContainer(Component) {
+  return RNcreateAppContainer(Component);
+}
