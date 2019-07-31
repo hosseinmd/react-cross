@@ -1,6 +1,6 @@
 {
   "name": "@react-cross/react-native",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "",
   "publishConfig": {
     "access": "public"
@@ -16,9 +16,9 @@
   "devDependencies": {
     "@react-native-community/async-storage": "^1.5.0",
     "@react-native-community/netinfo": "^2.0.0",
+    "@types/react-native": "~0.57.38",
     "react": "^16.8.6",
-    "react-native-web": "^0.11.4",
-    "@types/react-native": "~0.57.38"
+    "react-native-web": "^0.11.4"
   },
   "peerDependencies": {
     "@react-native-community/async-storage": ">=1.5",

@@ -1,6 +1,6 @@
 {
   "name": "@react-cross/navigation",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "",
   "publishConfig": {
     "access": "public"
@@ -14,10 +14,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "react-navigation-drawer": "1.3.0",
-    "react-navigation-tabs": "~1.1.4",
-    "@react-cross/react-native": "^0.2.2",
-    "@react-cross/utility": "^0.2.2",
+    "@react-cross/react-native": "^0.3.0",
+    "@react-cross/utility": "^0.3.0",
     "@react-navigation/core": "~3.4.2",
     "@react-navigation/native": "^3.5.0",
     "@react-navigation/web": "^1.0.0-alpha.9",
@@ -29,14 +27,15 @@
     "react-native-device-info": "^0.24.3",
     "react-native-exit-app": "^1.0.0",
     "react-native-gesture-handler": "^1.3.0",
-    "react-native-restart": "0.0.7",
-    "react-native-status-bar-height": "^2.3.1",
-    "react-navigation-stack": "1.4.0",
     "react-native-reanimated": "^1.0.0-alpha",
-    "react-native-screens": "^1.0.0 || ^1.0.0-alpha"
+    "react-native-restart": "0.0.7",
+    "react-native-screens": "^1.0.0 || ^1.0.0-alpha",
+    "react-native-status-bar-height": "^2.3.1",
+    "react-navigation-drawer": "1.3.0",
+    "react-navigation-stack": "1.4.0",
+    "react-navigation-tabs": "~1.1.4"
   },
   "devDependencies": {
     "@types/react-native": "~0.57.38"
-  },
-  "peerDependencies": {}
+  }
 }
