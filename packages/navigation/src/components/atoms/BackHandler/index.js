@@ -1,5 +1,15 @@
 import React, { PureComponent } from "react";
 import { BackHandler as RNBackHandler } from "react-native";
+
+/**
+ * manage hardware back press
+ * @class BackHandler
+ * @typedef {object} props
+ * @prop {()=> boolean} onBackPress
+ * @prop {any} navigation
+ * @extends {PureComponent<props>}
+ */
+
 export class BackHandler extends PureComponent {
   static subscribedComponents = {};
   static currentBackListener = null;
