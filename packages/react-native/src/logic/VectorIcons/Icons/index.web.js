@@ -1,1 +1,5 @@
-export { MaterialCommunityIcons, MaterialIcons } from "react-web-vector-icons";
+export {
+  MaterialCommunityIcons,
+  MaterialIcons,
+  Feather,
+} from "react-web-vector-icons";
