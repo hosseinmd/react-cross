@@ -42,6 +42,5 @@ declare let config: {
   };
   colorContent: String;
   submit: (language: language, theme: theme) => undefined;
-  isAppleStatusBarBig: boolean;
 };
 export default config;

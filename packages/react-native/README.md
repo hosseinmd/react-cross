@@ -155,36 +155,6 @@ const buildNumber = DeviceInfo.getBuildNumber();
 
 ## Troubleshooting
 
-When installing or using `react-native-device-info`, you may encounter the following problems:
-
-<details>
-  <summary>[android] - Unable to merge dex / Multiple dex files / Problems with `com.google.android.gms`</summary>
-
-`react-native-device-info` uses `com.google.android.gms:play-services-gcm` to provide [getInstance()][#getinstance].
-This can lead to conflicts when building the Android application.
-
-If you're using a different version of `com.google.android.gms:play-services-gcm` in your app, you can define the
-`googlePlayServicesVersion` gradle variable in your `build.gradle` file to tell `react-native-device-info` what version
-it should require. See the example project included here for a sample.
-
-If you're using a different library that conflicts with `com.google.android.gms:play-services-gcm`, and you are certain you know what you are doing such that you will avoid version conflicts, you can simply
-ignore this dependency in your gradle file:
-
-```groovy
- compile(project(':react-native-device-info')) {
-    exclude group: 'com.google.android.gms'
-}
-```
-
-</details>
-
-<details>
-  <summary>[ios] - ld: library not found for -lRNDeviceInfo-tvOS</summary>
-
-Seems to be a bug caused by `react-native link`. You can manually delete `libRNDeviceInfo-tvOS.a` in `Xcode -> [Your iOS build target] -> Build Phrases -> Link Binary with Libraries`.
-
-</details>
-
 <details>
   <summary>[ios] - [NetworkInfo] Descriptors query returned error: Error Domain=NSCocoaErrorDomain Code=4099
  “The connection to service named com.apple.commcenter.coretelephony.xpc was invalidated.”</summary>

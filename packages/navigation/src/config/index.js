@@ -2,7 +2,6 @@ import enums from "../common/enums"; //never use common/index becuase color use 
 import { I18nManager } from "react-native";
 import { AsyncStorage } from "../logic/AsyncStorage";
 import RNRestart from "react-native-restart";
-import DeviceInfo from "react-native-device-info";
 import { platform } from "@react-cross/utility";
 
 const config = {
@@ -57,12 +56,6 @@ const config = {
     await this.theme.set(theme);
 
     platform.isWeb ? window.location.reload() : RNRestart.Restart();
-  },
-
-  get isAppleStatusBarBig() {
-    const status_big = ["iPhone X", "iPhone XR", "iPhone XS Max", "iPhone XS"];
-    const model = DeviceInfo.getModel();
-    return status_big.includes(model);
   },
 };
 
