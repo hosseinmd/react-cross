@@ -1,22 +1,35 @@
-export const NetInfo = {
-  addEventListener(eventName = "connectionChange", listener) {
-    function online() {
-      listener({ type: "online" });
-    }
-    function offline() {
-      listener({ type: "none" });
-    }
+const MODE_ONLINE = {
+  type: "online",
+  isConnected: true,
+},
+MODE_OffLINE = {
+  type: "none",
+  isConnected: false,
+};
 
-    window.addEventListener("online", online);
-    window.addEventListener("offline", offline);
-    return {
-      remove: () => {
-        window.removeEventListener("online", online);
-        window.removeEventListener("offline", offline);
-      },
-    };
-  },
-  getConnectionInfo() {
-    return { type: window.navigator.onLine ? "online" : "none" };
-  },
+export const NetInfo = {
+addEventListener(listener) {
+  function online() {
+    listener(MODE_ONLINE);
+  }
+  function offline() {
+    listener(MODE_OffLINE);
+  }
+
+  window.addEventListener("online", online);
+  window.addEventListener("offline", offline);
+  return {
+    remove: () => {
+      window.removeEventListener("online", online);
+      window.removeEventListener("offline", offline);
+    },
+  };
+},
+fetch() {
+  if (window.navigator.onLine) {
+    return MODE_ONLINE;
+  } else {
+    return MODE_OffLINE;
+  }
+},
 };
