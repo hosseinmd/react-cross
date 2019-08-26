@@ -1,6 +1,6 @@
 {
   "name": "@react-cross/navigation",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "",
   "publishConfig": {
     "access": "public"
@@ -14,7 +14,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@react-cross/react-native": "^0.3.0",
+    "@react-cross/react-native": "^0.3.1",
     "@react-cross/utility": "^0.3.0",
     "@react-navigation/core": "~3.4.2",
     "@react-navigation/native": "^3.5.0",
@@ -34,8 +34,8 @@
     "react-navigation-tabs": "~1.1.4"
   },
   "devDependencies": {
-    "react-native-restart": "^0.0.12",
-    "@types/react-native": "~0.57.38"
+    "@types/react-native": "~0.57.38",
+    "react-native-restart": "^0.0.12"
   },
   "peerDependencies": {
     "react-native-restart": ">=0.0"
