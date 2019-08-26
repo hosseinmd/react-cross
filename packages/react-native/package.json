@@ -15,14 +15,14 @@
   },
   "devDependencies": {
     "@react-native-community/async-storage": "^1.5.0",
-    "@react-native-community/netinfo": "^2.0.0",
+    "@react-native-community/netinfo": "^4.1.4",
     "@types/react-native": "~0.57.38",
     "react": "^16.8.6",
     "react-native-web": "^0.11.4"
   },
   "peerDependencies": {
     "@react-native-community/async-storage": ">=1.5",
-    "@react-native-community/netinfo": ">=2.0",
+    "@react-native-community/netinfo": ">=4.0",
     "react": ">=16.0",
     "react-native-web": ">=0.11"
   }
