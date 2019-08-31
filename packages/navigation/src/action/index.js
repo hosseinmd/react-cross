@@ -1,7 +1,6 @@
 import { enums } from "../common";
 import { emit, on } from "jetemit";
 import { NavigationActions, StackActions } from "../react-navigation";
-import RNExitApp from "react-native-exit-app";
 
 var _state = {
   page: [],
@@ -96,9 +95,6 @@ export const action = {
   },
   set state(value) {
     _state = value;
-  },
-  exitApp() {
-    RNExitApp.exitApp();
   },
   page: {
     set(name, props) {
