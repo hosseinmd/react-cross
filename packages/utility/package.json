@@ -10,9 +10,13 @@
   "author": "Hossein Mohammadi",
   "license": "MIT",
   "devDependencies": {
+    "@stately/core": "^0.0.3",
+    "@stately/hooks": "^0.0.3",
     "@types/react-native": "~0.57.38"
   },
   "peerDependencies": {
-    "react-native": ">=0.57"
+    "react-native": ">=0.57",
+    "@stately/core": ">=0.0",
+    "@stately/hooks": ">=0.0"
   }
 }

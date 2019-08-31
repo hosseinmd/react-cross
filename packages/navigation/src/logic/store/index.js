@@ -3,9 +3,8 @@ import actions from "../actions";
 import { platform } from "@react-cross/utility";
 
 const initialState = {
+  /**@type {import("../../react-navigation").NavigationContainer} */
   appContainer: null,
-  modals: {},
-  modals_statusbar: {},
 };
 
 export const [useGlobal, getGlobal] = createState(
