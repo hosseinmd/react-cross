@@ -4,8 +4,6 @@ export default StyleSheet.create({
     position: "absolute",
     left: 0,
     right: 0,
-    borderTopStartRadius: 20,
-    borderTopEndRadius: 20,
     overflow: "hidden",
   },
   scroll_content_container: {

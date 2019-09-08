@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { platform } from "@react-cross/utility";
+import { platform, useFlattenStyle } from "@react-cross/utility";
 
 /**
  * @typedef TouchableProps
@@ -13,16 +13,20 @@ import { platform } from "@react-cross/utility";
     import("react-native").TouchableOpacityProps & 
     import("react-native").TouchableNativeFeedbackProps & 
     {
-      affect: boolean;
+      freeze: boolean;
       enableBorderless: boolean;
     }
   }
  */
 
 /**
- * @type {{ new(props: any): {
- * props: TouchableProps
- * }}
+  @type {
+    {
+      new(props: any): {
+         props: TouchableProps,
+      },
+    }
+  }
  */
 export const Touchable = memo(
   ({
@@ -31,27 +35,25 @@ export const Touchable = memo(
     onPress,
     onLongPress,
     children,
-    affect = true,
+    freeze = false,
     ...lostProps
   }) => {
     const press = useCallback(
-      event => {
-        if (onPress) window.requestAnimationFrame(onPress);
-      },
+      event => onPress && window.requestAnimationFrame(onPress),
       [onPress],
     );
+
     const longPress = useCallback(
-      event => {
-        if (onLongPress) window.requestAnimationFrame(onLongPress);
-      },
+      event => onLongPress && window.requestAnimationFrame(onLongPress),
       [onLongPress],
     );
 
-    const AndroidTouchable = affect
-      ? TouchableNativeFeedback
-      : TouchableWithoutFeedback;
+    const AndroidTouchable = freeze
+      ? TouchableWithoutFeedback
+      : TouchableNativeFeedback;
+
     return platform.isAndroid ? (
-      <AndroidTouchable
+      (<AndroidTouchable
         useForeground={TouchableNativeFeedback.canUseNativeForeground()}
         background={
           enableBorderless
@@ -63,17 +65,17 @@ export const Touchable = memo(
         onLongPress={longPress}
       >
         <View style={style}>{children}</View>
-      </AndroidTouchable>
+      </AndroidTouchable>)
     ) : (
-      <TouchableOpacity
-        activeOpacity={affect ? 0.2 : 1}
+      (<TouchableOpacity
+        {...(freeze && { activeOpacity: 1 })}
+        {...lostProps}
         onPress={press}
         onLongPress={longPress}
         style={style}
-        {...lostProps}
       >
         {children}
-      </TouchableOpacity>
+      </TouchableOpacity>)
     );
   },
 );

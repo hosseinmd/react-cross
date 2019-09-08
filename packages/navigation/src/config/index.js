@@ -5,23 +5,6 @@ import RNRestart from "react-native-restart";
 import { platform } from "@react-cross/utility";
 
 const config = {
-  appNavigator: {},
-  // first_page
-  first_page: null,
-  // typography
-  pages: {},
-  menu_content: null,
-  // menu_content
-
-  get colorContent() {
-    return this.theme == enums.THEME.LIGHT
-      ? enums.THEME.DARK
-      : enums.THEME.LIGHT;
-  },
-  get isRTL() {
-    return I18nManager.isRTL;
-  },
-
   language: {
     value: null,
     async reduce(defaultLanguage) {

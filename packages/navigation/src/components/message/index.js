@@ -4,12 +4,12 @@ import { LayoutAnimation } from "react-native";
 import styles from "./styles";
 import { enums } from "../../common";
 import { action } from "../../action";
-import { Touchable } from "../ui";
 import { Header } from "../../react-navigation";
+import { Touchable } from "@react-cross/components";
 
 export default class Message extends PureComponent {
   state = {
-    message: false,
+    message: null,
   };
   componentDidMount() {
     this.listener(enums.JETEMIT.MESSAGE, message => {
