@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { memo, useMemo, useCallback, useEffect } from "react";
 import { BackHandler as RNBackHandler } from "react-native";
 import { action } from "../../../action";
 
@@ -11,47 +11,48 @@ import { action } from "../../../action";
  * @extends {PureComponent<props>}
  */
 
-export class BackHandler extends PureComponent {
-  static subscribedComponents = {};
-  static currentBackListener = null;
-  constructor(props) {
-    super(props);
-    this.key = this.props.navigation.state.key;
-    BackHandler.subscribedComponents[this.key] = this._handleNavigationChange;
-  }
-  didFocus = () => {
-    RNBackHandler.addEventListener("hardwareBackPress", this.onBackPressed);
-  };
-  willBlur = () => {
-    RNBackHandler.removeEventListener("hardwareBackPress", this.onBackPressed);
-  };
-
-  onBackPressed = () => {
-    return this.props.onBackPress();
-  };
-
-  _handleNavigationChange = isCurrent => {
-    if (isCurrent && !this.isFocused) {
-      this.didFocus();
-      this.isFocused = true;
-      BackHandler.currentBackListener = this.onBackPressed;
-    } else if (!isCurrent && this.isFocused) {
-      this.willBlur();
-      this.isFocused = false;
+export const BackHandler = memo(props => {
+  const _handleNavigationChange = isCurrent => {
+    if (isCurrent && !holder.isFocused) {
+      didFocus();
+      holder.isFocused = true;
+      BackHandler.currentBackListener = onBackPressed;
+    } else if (!isCurrent && holder.isFocused) {
+      willBlur();
+      holder.isFocused = false;
       BackHandler.currentBackListener = null;
     }
   };
-  componentDidMount() {
-    this._handleNavigationChange(
-      action.getActiveRoute(this.props.navigation.state).key == this.key,
-    );
-  }
-  componentWillUnmount() {
-    delete BackHandler.subscribedComponents[this.key];
-    RNBackHandler.removeEventListener("hardwareBackPress", this.onBackPressed);
-  }
 
-  render() {
-    return this.props.children || null;
-  }
-}
+  const holder = useMemo(() => {
+    const key = props.navigation.state.key;
+    BackHandler.subscribedComponents[key] = _handleNavigationChange;
+    return { key };
+  }, []);
+
+  const didFocus = () => {
+    RNBackHandler.addEventListener("hardwareBackPress", onBackPressed);
+  };
+
+  const willBlur = () => {
+    RNBackHandler.removeEventListener("hardwareBackPress", onBackPressed);
+  };
+
+  const onBackPressed = useCallback(() => {
+    return props.onBackPress();
+  }, []);
+
+  useEffect(() => {
+    _handleNavigationChange(
+      action.getActiveRoute(props.navigation.state).key == holder.key,
+    );
+    return () => {
+      delete BackHandler.subscribedComponents[holder.key];
+      RNBackHandler.removeEventListener("hardwareBackPress", onBackPressed);
+    };
+  }, []);
+
+  return props.children || null;
+});
+BackHandler.subscribedComponents = {};
+BackHandler.currentBackListener = null;
