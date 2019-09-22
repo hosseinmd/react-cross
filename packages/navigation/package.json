@@ -33,6 +33,7 @@
     "react-native-restart": "^0.0.12"
   },
   "devDependencies": {
-    "@types/react-native": "~0.57.38"
+    "@types/react-native": "~0.57.38",
+    "react-navigation": "^4.0.7"
   }
 }
