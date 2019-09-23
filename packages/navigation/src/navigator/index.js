@@ -1,11 +1,10 @@
 import React, { memo, useEffect } from "react";
 import styles from "./styles";
 import { StatusBar, View } from "react-native";
-import Message from "../components/message";
 import { action } from "../action";
 import { platform } from "@react-cross/utility";
 import { useGlobal } from "../logic/store";
-import { BackHandler } from "../components/atoms";
+import { BackHandler, Message } from "../components/atoms";
 
 const Navigator = memo(
   ({ statusBarContentColor, statusBarBackgroundColor }) => {
