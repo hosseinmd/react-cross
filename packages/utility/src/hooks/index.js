@@ -1,29 +1,19 @@
-import { StyleSheet } from "react-native";
 import { useMemo, useEffect, useRef } from "react";
 import { createStore } from "@stately/core";
 import { createHooks } from "@stately/hooks";
 
 export function useFlattenStyle(style, deps) {
-  return useMemo(() => StyleSheet.flatten(style), deps);
+  return useMemo(() => style, deps);
 }
 
 /**
  * @template stylesT
- * @param {()=>stylesT} styles
+ * @param {() => stylesT} styles
  * @param {any[]} deps
  * @returns {stylesT}
  */
 export function useFlattenStyles(styles, deps) {
-  return useMemo(() => {
-    const result = {};
-    const object = styles();
-    for (const key in object) {
-      if (object.hasOwnProperty(key)) {
-        result[key] = StyleSheet.flatten(object[key]);
-      }
-    }
-    return result;
-  }, deps);
+  return useMemo(() => styles(), deps);
 }
 
 /**
