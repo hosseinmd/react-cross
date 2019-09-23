@@ -1,9 +1,9 @@
 import React, { useState, useEffect, memo } from "react";
 import { LayoutAnimation } from "react-native";
 import styles from "./styles";
-import { enums } from "../../common";
-import { action } from "../../action";
-import { Header } from "../../react-navigation";
+import { enums } from "../../../common";
+import { action } from "../../../action";
+import { Header } from "../../../react-navigation";
 import { Touchable } from "@react-cross/components";
 import { on } from "jetemit";
 
