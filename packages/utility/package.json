@@ -1,6 +1,6 @@
 {
   "name": "@react-cross/utility",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "",
   "publishConfig": {
     "access": "public"
@@ -15,8 +15,8 @@
     "@types/react-native": "~0.57.38"
   },
   "peerDependencies": {
-    "react-native": ">=0.57",
     "@stately/core": ">=0.0",
-    "@stately/hooks": ">=0.0"
+    "@stately/hooks": ">=0.0",
+    "react-native": ">=0.57"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@react-cross/navigation",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "",
   "publishConfig": {
     "access": "public"
@@ -14,9 +14,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@react-cross/react-native": "^0.3.1",
-    "@react-cross/utility": "^0.3.0",
-    "@react-cross/components": "^0.3.1",
+    "@react-cross/components": "^0.4.0",
+    "@react-cross/react-native": "^0.4.0",
+    "@react-cross/utility": "^0.4.0",
     "@react-navigation/core": "~3.5.0",
     "@react-navigation/native": "~3.6.1",
     "@react-navigation/web": "^1.0.0-alpha.9",
@@ -26,11 +26,11 @@
     "react-dom": "^16.8.6",
     "react-global-hook": "^1.1.1",
     "react-native-gesture-handler": "^1.4.1",
+    "react-native-restart": "^0.0.12",
     "react-native-status-bar-height": "^2.3.1",
     "react-navigation-drawer": "~1.4.0",
     "react-navigation-stack": "~1.5.0",
-    "react-navigation-tabs": "~1.2.0",
-    "react-native-restart": "^0.0.12"
+    "react-navigation-tabs": "~1.2.0"
   },
   "devDependencies": {
     "@types/react-native": "~0.57.38",
