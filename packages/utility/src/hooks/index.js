@@ -17,6 +17,7 @@ export function useFlattenStyles(styles, deps) {
 }
 
 /**
+ * @deprecated use react-global-hooks
  * @template stateT , actionsT
  * @param {()=>stateT} initialState
  * @param {()=>actionsT} actions
